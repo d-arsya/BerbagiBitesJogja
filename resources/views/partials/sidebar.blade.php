@@ -69,11 +69,21 @@
             </button>
             <div id="navbar-default" class="hidden fixed top-12 w-full md:w-auto">
                 <ul
-                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md dark:border-gray-700">
+                    class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                     <li>
-                        <a href="/dashboard"
-                            class="block py-2 px-3 text-pink-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
-                            aria-current="page">Dashboard</a>
+                        <a href="/donation"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Donation</a>
+                    </li>
+                    <li>
+                        <a href="/donation"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Donation</a>
+                    </li>
+                    <li>
+                        <a href="/donation"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Donation</a>
                     </li>
 
                 </ul>

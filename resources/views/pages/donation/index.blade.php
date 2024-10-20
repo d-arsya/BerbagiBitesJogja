@@ -8,8 +8,8 @@
     <div>
         {{ $donations->links() }}
     </div>
-    <table class="shadow-md sm:rounded-lg mt-6 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="shadow-md sm:rounded-lg mt-6 w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="hidden sm:table-cell px-6 py-3">
                     Tanggal
@@ -31,11 +31,11 @@
         <tbody>
             @foreach ($donations as $item)
                 
-            <tr class="odd:bg-white text-center odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+            <tr class="odd:bg-white text-center">
                 <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->pengambilan }}
                 </td>
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->sponsor()->name }}
                 </th>
                 <td class="px-6 py-4">

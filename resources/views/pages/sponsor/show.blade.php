@@ -2,8 +2,8 @@
 @section('container')
 <a class="bg-orange-300 hover:bg-orange-500 shadow-md px-5 py-2.5 rounded-md text-white" href="{{ route('sponsor.index') }}">< Kembali</a>
 <div class="mt-6 shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Nama Sponsor
@@ -23,8 +23,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="odd:bg-white even:bg-gray-50 border-b">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $sponsor->name }}
                 </th>
                 <td class="px-6 py-4 hidden sm:table-cell">
@@ -45,8 +45,8 @@
 </div>
 <h1 class="text-center text-xl font-bold my-10">Donasi Oleh {{ $sponsor->name }}</h1>
 <div class="mt-6 shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="hidden sm:table-cell px-6 py-3">
                     Tanggal
@@ -65,7 +65,7 @@
         <tbody>
             @foreach ($donations as $item)
                 
-            <tr class="odd:bg-white text-center odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+            <tr class="odd:bg-white text-center even:bg-gray-50 border-b">
                 <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->pengambilan }}
                 </td>

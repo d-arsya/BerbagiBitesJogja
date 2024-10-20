@@ -11,8 +11,8 @@
 
 
 <div class="mt-10 shadow-md sm:rounded-lg">
-    <table class="text-center w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="text-center w-full text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Nama
@@ -33,8 +33,8 @@
         </thead>
         <tbody>
             @foreach ($heroes as $item)
-            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="odd:bg-white">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->nama }}
 
                     <span class="md:hidden italic font-normal text-gray-500 block">
@@ -110,8 +110,8 @@
     <h1 class="text-center font-bold text-lg">Daftar Surplus Food</h1>
     <a class="bg-lime-400 hover:bg-lime-600 shadow-md p-2 rounded-md text-white" href="{{ route('food.index') }}">+ Tambah</a>
     <table
-        class="mt-5 shadow-md sm:rounded-lg w-full text-center text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        class="mt-5 shadow-md sm:rounded-lg w-full text-center text-sm text-left rtl:text-right text-gray-500">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
                     Nama
@@ -134,8 +134,8 @@
             @foreach ($foods as $item)
                 
             <tr
-            class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            class="odd:bg-white even:bg-gray-50 border-b">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->nama }}
                 </th>
                 <td class="px-6 py-4">
