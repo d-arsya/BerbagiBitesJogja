@@ -98,7 +98,7 @@
                             <a href="{{ route('donation.show',$item->donation()->id) }}">
                                 {{ $item->donation()->sponsor()->name }}
                                 <span class="block italic">
-                                    {{ $item->donation()->pengambilan }}
+                                    {{ \Carbon\Carbon::parse($item->donation()->pengambilan)->format('d-m-Y') }}
                                 </span>
                             </a>
                             

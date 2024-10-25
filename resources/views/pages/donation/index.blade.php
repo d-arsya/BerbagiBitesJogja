@@ -16,11 +16,12 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Nama Donatur
+                    
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 hidden sm:table-cell">
                     Kuota
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="hidden sm:table-cell px-6 py-3">
                     Status
                 </th>
                 <th scope="col" class="px-6 py-3 text-center">
@@ -37,11 +38,17 @@
                 </td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->sponsor()->name }}
+                    <span class="md:hidden italic font-normal text-gray-500 block">
+                        {{ $item->kuota-$item->sisa }}/{{ $item->kuota }}
+                    </span>
+                    <span class="md:hidden italic font-normal text-gray-500 block">
+                        {{ $item->status }}
+                    </span>
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->kuota-$item->sisa }}/{{ $item->kuota }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->status }}
                 </td>
                 <td class="px-6 py-4 flex justify-center gap-2">

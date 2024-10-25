@@ -23,7 +23,7 @@
                 <th scope="col" class="hidden sm:table-cell px-6 py-3">
                     Email
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 hidden sm:table-cell">
                     Kontribusi
                 </th>
                 <th scope="col" class="px-6 py-3 text-center">
@@ -36,6 +36,9 @@
             <tr class="odd:bg-white even:bg-gray-50 border-b">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->name }}
+                    <span class="md:hidden italic font-normal text-gray-500 block">
+                        {{ $item->donation()->count() }} Kontribusi
+                    </span>
                 </th>
                 <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->address }}
@@ -46,7 +49,7 @@
                 <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->email }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->donation()->count() }}
                 </td>
                 <td class="px-6 py-4 flex justify-center gap-2">

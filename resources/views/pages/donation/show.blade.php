@@ -23,7 +23,7 @@
                 <th scope="col" class="hidden sm:table-cell px-6 py-3">
                     Telepon
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 hidden sm:table-cell">
                     Kode
                 </th>
                 <th scope="col" class="px-6 py-3 text-center">
@@ -40,6 +40,9 @@
                     <span class="md:hidden italic font-normal text-gray-500 block">
                         {{ $item->fakultas }}
                     </span>
+                    <span class="md:hidden italic font-normal text-gray-500 block">
+                        {{ $item->kode }}
+                    </span>
                 </th>
                 <td class="px-6 py-4 hidden sm:table-cell">
                     {{ $item->fakultas }}
@@ -49,7 +52,7 @@
                     {{ $item->telepon }}
                     
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 hidden sm:table-cell">
                         {{ $item->kode }}                    
                 </td>
                 <td class="px-6 py-4 flex justify-center gap-2">

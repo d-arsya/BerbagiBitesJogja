@@ -20,7 +20,7 @@
         </a>
     </header>
     <div class="max-w-lg mx-auto px-8 mt-6">
-        <div class="pt-12 h-screen bg-navy px-12">
+        <div class="pt-12 h-screen bg-navy">
             {{-- ada  --}}
             <h1 class="text-center text-4xl font-bold text-white">Heroes</h1>
             <div class="w-full rounded-lg bg-tosca mt-8 py-5 px-6">
@@ -34,7 +34,7 @@
                     <input type="submit" value="Let's go" class="w-full bg-white rounded-md p-1 text-lg font-bold mt-10 text-navy">
                 </form>
             </div>
-        </div>ba
+        </div>
     </div>
     <footer class="fixed bottom-0 w-full bg-navy py-4">
         <h1 id="clickFooter" class="text-center text-sm text-white font-semibold">© Copyright 2024 BERBAGI BITES

@@ -51,7 +51,7 @@
 </aside>
 
 </div>
-<div class="block fixed w-full sm:hidden">
+<div class="z-50 block fixed w-full sm:hidden">
     <nav class="bg-white border-gray-200">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -76,14 +76,39 @@
                             aria-current="page">Donation</a>
                     </li>
                     <li>
-                        <a href="/donation"
+                        <a href="/sponsor"
                             class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
-                            aria-current="page">Donation</a>
+                            aria-current="page">Sponsor</a>
                     </li>
                     <li>
-                        <a href="/donation"
+                        <a href="/hero"
                             class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
-                            aria-current="page">Donation</a>
+                            aria-current="page">Heroes</a>
+                    </li>
+                    <li>
+                        <a href="/food"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Foods</a>
+                    </li>
+                    <li>
+                        <a href="/finance"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Finance</a>
+                    </li>
+                    <li>
+                        <a href="/report"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Reports</a>
+                    </li>
+                    <li>
+                        <a href="/media"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Media</a>
+                    </li>
+                    <li>
+                        <a href="/logout"
+                            class="block py-2 px-3 text-navy-600 rounded hover:bg-tosca-600 hover:text-white md:bg-transparent md:text-blue-700 md:p-0"
+                            aria-current="page">Logout</a>
                     </li>
 
                 </ul>
