@@ -38,6 +38,11 @@ class DonationController extends Controller
     }
     public function update(Request $request, Donation $donation)
     {
+        if($request->catatan){
+            $donation->catatan = $request->catatan;
+            $donation->save(); 
+            return back();
+        }
         $donation->pengambilan = $request->pengambilan;
         $donation->status = $request->status;
         $donation->jam = $request->jam;

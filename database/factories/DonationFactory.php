@@ -18,7 +18,7 @@ class DonationFactory extends Factory
     {
         $kuota = fake()->numberBetween(10,100);
         return [
-            'sponsor'=>fake()->numberBetween(1,2),
+            'sponsor'=>fake()->numberBetween(1,10),
             'kuota'=>$kuota,
             'sisa'=>$kuota,
             'pengambilan'=>fake()->dateTimeBetween('now','+30 days'),

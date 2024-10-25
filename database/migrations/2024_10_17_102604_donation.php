@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('jam');
             $table->string('lokasi');
             $table->string('maps');
+            $table->text('catatan')->nullable();
             $table->enum('status',["aktif","selesai"]);
             $table->timestamps();
         });

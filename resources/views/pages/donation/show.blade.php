@@ -10,6 +10,19 @@
 </div>
 
 
+<div class="mt-10 shadow-md sm:rounded-lg p-6">
+    <h1 class="text-xl mb-3">Catatan</h1>
+    <form method="POST" action="{{ route('donation.update',$donation->id) }}">
+        @csrf
+        @method('PUT')
+        @if ($donation->catatan)
+        <textarea class="focus:outline-none w-full rounded-lg" name="catatan" rows="3" placeholder="Catatan....">{{ $donation->catatan }}</textarea>
+        @else
+        <textarea class="focus:outline-none w-full rounded-lg" name="catatan" rows="3" placeholder="Catatan...."></textarea>
+        @endif
+        <button type="submit" class="bg-yellow-300 hover:bg-yellow rounded-md p-2 text-white">Submit</button>
+    </form>
+</div>
 <div class="mt-10 shadow-md sm:rounded-lg">
     <table class="text-center w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
