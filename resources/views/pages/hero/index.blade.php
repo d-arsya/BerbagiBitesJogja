@@ -27,7 +27,7 @@
         <tbody>
             @foreach ($heroes as $item)
             <tr class="odd:bg-white even:bg-gray-50 border-b">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->nama }}
                     <span class="md:hidden italic font-normal text-gray-500 block">
                         <a href="{{ route('hero.faculty',$item->fakultas) }}">
@@ -35,19 +35,19 @@
                         </a>
                     </span>
                 </th>
-                <td class="px-6 py-4 hidden sm:table-cell">
+                <td class="px-2 py-4 hidden sm:table-cell">
                     <a href="{{ route('hero.faculty',$item->fakultas) }}">
                         {{ $item->fakultas }}
                     </a>
                     
                 </td>
-                <td class="px-6 py-4 hidden sm:table-cell">
+                <td class="px-2 py-4 hidden sm:table-cell">
                     <a href="https://wa.me/{{ $item->telepon }}">
                         {{ $item->telepon }}
                     </a>
                     
                 </td>
-                <td class="px-6 py-4 flex flex-col">
+                <td class="px-2 py-4 flex flex-col">
                     @php
                         $donation = $item->donation();
                         $sponsor = $donation->sponsor();

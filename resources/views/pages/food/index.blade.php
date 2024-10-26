@@ -69,7 +69,7 @@
                         <th scope="col" class="hidden sm:table-cell px-6 py-3">
                             Satuan
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3 hidden sm:table-cell">
                             Donatur
                         </th>
                         <th scope="col" class="px-6 py-3 text-center">
@@ -82,18 +82,27 @@
                     
                     <tr
                     class="odd:bg-white even:bg-gray-50 border-b">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $item->nama }}
+                        <span class="md:hidden sm:table-cell block font-normal">
+
+                            <a href="{{ route('donation.show',$item->donation()->id) }}">
+                                {{ $item->donation()->sponsor()->name }}
+                                <span class="block italic">
+                                    {{ \Carbon\Carbon::parse($item->donation()->pengambilan)->format('d-m-Y') }}
+                                </span>
+                            </a>
+                        </span>
                     </th>
-                    <td class="px-6 py-4 hidden sm:table-cell">
+                    <td class="px-2 py-4 hidden sm:table-cell">
                         {{ $item->jumlah }}
                         
                     </td>
-                    <td class="px-6 py-4 hidden sm:table-cell">
+                    <td class="px-2 py-4 hidden sm:table-cell">
                         {{ $item->satuan }}
                         
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-2 py-4 hidden sm:table-cell">
                         <a href="{{ route('donation.show',$item->donation()->id) }}">
                             {{ $item->donation()->sponsor()->name }}
                             <span class="block italic">
@@ -102,7 +111,7 @@
                             </a>
                             
                         </td>
-                        <td class="px-6 py-4 flex justify-center gap-2">
+                        <td class="px-2 py-4 flex justify-center gap-2">
                             <a href="{{ route('food.edit', $item->id) }}" class="p-2 rounded-md bg-yellow-300 hover:bg-yellow-600">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2.58333 15.4167H3.88958L12.85 6.45625L11.5438 5.15L2.58333 14.1104V15.4167ZM0.75 17.25V13.3542L12.85 1.27708C13.0333 1.10903 13.2358 0.979167 13.4573 0.8875C13.6788 0.795833 13.9118 0.75 14.1563 0.75C14.4007 0.75 14.6375 0.795833 14.8667 0.8875C15.0958 0.979167 15.2944 1.11667 15.4625 1.3L16.7229 2.58333C16.9063 2.75139 17.0399 2.95 17.124 3.17917C17.208 3.40833 17.25 3.6375 17.25 3.86667C17.25 4.11111 17.208 4.3441 17.124 4.56562C17.0399 4.78715 16.9063 4.98958 16.7229 5.17292L4.64583 17.25H0.75ZM12.1854 5.81458L11.5438 5.15L12.85 6.45625L12.1854 5.81458Z" fill="white"/>
