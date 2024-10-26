@@ -10,7 +10,9 @@ class DonationController extends Controller
 {
     public function index()
     {
-        $donations = Donation::orderBy('status')->paginate(10);
+        $donations = Donation::orderByRaw("CASE WHEN status = 'aktif' THEN 0 WHEN status = 'selesai' THEN 1 ELSE 2 END")
+	                        ->orderBy('pengambilan')
+		                     ->paginate(10);
         return view("pages.donation.index",["donations"=>$donations]);
     }
     public function create()
