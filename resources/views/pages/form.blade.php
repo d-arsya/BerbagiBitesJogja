@@ -32,6 +32,11 @@
                 <div class="w-full rounded-lg bg-tosca mt-8 py-5 px-6">
                     <h1 class="text-xl text-white text-center italic">Terimakasih telah menjadi heroes hari ini
                     </h1>
+                    @if ($donation->sponsor()->id==1)
+                    <h1 class="text-center text-xs">
+                        *satu orang akan mendapatkan 1 roti
+                    </h1>
+                    @endif
                     <h1 class="text-3xl text-white font-medium text-center italic my-4">
                         {{ implode(' ', str_split(session('kode'))) }}
                     </h1>
