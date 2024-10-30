@@ -17,7 +17,8 @@ return new class extends Migration
             $table->foreignIdFor(Donation::class,'donation');
             $table->string('nama');
             $table->integer('jumlah');
-            $table->enum('satuan',["pcs","gr","ltr","kg","paket"]);
+            $table->integer('berat');
+            $table->enum('satuan',["gr","ltr"]);
             $table->string('keterangan')->nullable(true);
             $table->timestamps();
         });

@@ -22,6 +22,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/hero/cancel',[HeroController::class,'cancel'])->name('hero.cancel');
 });
 Route::middleware('auth')->group(function(){
+    Route::post('/hero/contributor',[HeroController::class,'contributor'])->name('hero.contributor');
     Route::resource('user', UserController::class);
     Route::resource('donation', DonationController::class);
     Route::resource('sponsor', SponsorController::class);

@@ -12,7 +12,8 @@ class FoodController extends Controller
     {
         $donations = Donation::where('status','aktif')->get();
         $foods = Food::orderBy('id', 'desc')->paginate(10);
-        return view('pages.food.index',["donations"=>$donations,"foods"=>$foods]);
+        $total = Food::totalGram();
+        return view('pages.food.index',compact('donations','foods','total'));
     }
     public function store(Request $request)
     {

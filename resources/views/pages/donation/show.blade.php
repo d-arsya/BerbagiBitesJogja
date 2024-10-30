@@ -28,6 +28,9 @@
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-6 py-3">
+                    No
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Nama
                 </th>
                 <th scope="col" class="hidden sm:table-cell px-6 py-3">
@@ -45,8 +48,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($heroes as $item)
+            @foreach ($heroes as $number=> $item)
             <tr class="odd:bg-white">
+                <td>{{ $number+1 }}</td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {{ $item->nama }}
 

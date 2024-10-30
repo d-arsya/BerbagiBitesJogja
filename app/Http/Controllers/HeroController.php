@@ -12,31 +12,52 @@ class HeroController extends Controller
     public function index()
     {
         $heroes = Hero::paginate(30);
-        return view('pages.hero.index',["heroes"=>$heroes]);
+        $donations = Donation::where('status', 'aktif')->get();
+        return view('pages.hero.index', compact('donations', 'heroes'));
     }
     public function backups()
     {
-        $backups = Backup::orderBy('updated _at','desc')->paginate(30);
-        return view('pages.hero.backups',["backups"=>$backups]);
+        $backups = Backup::orderBy('updated _at', 'desc')->paginate(30);
+        return view('pages.hero.backups', ["backups" => $backups]);
     }
     public function create()
     {
-        $donations = Donation::where('status','aktif')->get();
-        return view('pages.form',["donations"=>$donations]);
+        $donations = Donation::where('status', 'aktif')->get();
+        return view('pages.form', ["donations" => $donations]);
+    }
+    public function contributor(Request $request)
+    {
+        $donation = Donation::find($request["donation"]);
+        if ($donation->sisa < $request["jumlah"]) {
+            return back();
+        }
+        for ($i = 0; $i < $request["jumlah"]; $i++) {
+            Hero::create([
+                "nama" => $request["nama"],
+                "fakultas" => "Kontributor",
+                "donation" => $request["donation"],
+                "status" => "sudah",
+            ]);
+        }
+        $donation->sisa = $donation->sisa - $request["jumlah"];
+
+        $donation->save();
+        return back();
     }
     public function store(Request $request)
     {
+        dd($request);
         $donation = Donation::find($request["donation"]);
-        if($donation->sisa==0){
+        if ($donation->sisa == 0) {
             return back();
         }
         $request->validate([
-            "telepon"=>'regex:/^8/'
+            "telepon" => 'regex:/^8/'
         ]);
         $kode = $this->generate();
         Hero::create([
             "nama" => $request["nama"],
-            "telepon" => "62".$request["telepon"],
+            "telepon" => "62" . $request["telepon"],
             "fakultas" => $request["fakultas"],
             "donation" => $request["donation"],
             "kode" => $kode,
@@ -61,16 +82,16 @@ class HeroController extends Controller
     public function restore(Backup $backup)
     {
         $donation = $backup->donation();
-        if($donation->sisa > 0){
+        if ($donation->sisa > 0) {
             Hero::create([
                 "nama" => $backup->nama,
                 "telepon" => $backup->telepon,
                 "fakultas" => $backup->fakultas,
                 "donation" => $backup->donation,
                 "kode" => $backup->kode,
-                "status"=> "belum"
+                "status" => "belum"
             ]);
-            $donation->sisa = $donation->sisa -1;
+            $donation->sisa = $donation->sisa - 1;
             $donation->save();
             $backup->delete();
         }
@@ -84,7 +105,7 @@ class HeroController extends Controller
     public function destroy(Hero $hero)
     {
         $donation = $hero->donation();
-        $donation->sisa = $donation->sisa +1;
+        $donation->sisa = $donation->sisa + 1;
         $donation->save();
         Backup::create([
             "nama" => $hero->nama,
@@ -101,22 +122,24 @@ class HeroController extends Controller
         $characters = '1234567890';
         $charactersLength = strlen($characters);
         $uniqueString = '';
-        
+
         for ($i = 0; $i < 6; $i++) {
             $index = rand(0, $charactersLength - 1);
             $uniqueString .= $characters[$index];
         }
-        
+
         return $uniqueString;
     }
-    public function faculty($faculty){
-        $heroes = Hero::where('fakultas',$faculty)->get();
-        return view('pages.hero.faculty',["heroes"=>$heroes]);
+    public function faculty($faculty)
+    {
+        $heroes = Hero::where('fakultas', $faculty)->get();
+        return view('pages.hero.faculty', ["heroes" => $heroes]);
     }
-    public function cancel(Request $request){
-        $hero = Hero::where('donation',session('donation'))->where('kode',session('kode'))->first();
+    public function cancel(Request $request)
+    {
+        $hero = Hero::where('donation', session('donation'))->where('kode', session('kode'))->first();
         $donation = $hero->donation();
-        $donation->sisa = $donation->sisa +1;
+        $donation->sisa = $donation->sisa + 1;
         $donation->save();
         $hero->delete();
         $request->session()->invalidate();

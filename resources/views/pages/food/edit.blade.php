@@ -17,23 +17,26 @@
                             class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama
                             Makanan</label>
                     </div>
+                    <div class="relative z-0 w-full mt-6 mb-5 group">
+                        <input type="text" name="jumlah" id="jumlah" value="{{ $food->jumlah }}"
+                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            placeholder=" " required />
+                        <label for="jumlah"
+                            class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jumlah
+                            Makanan</label>
+                    </div>
                     <div class="grid grid-cols-2 gap-6">
                         <div class="relative z-0 w-full mb-5 group">
-                            <input type="number" name="jumlah" id="jumlah" value="{{ $food->jumlah }}"
+                            <input type="number" name="berat" id="berat" value="{{ $food->berat }}"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" " required />
                             <label for="jumlah"
-                                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Jumlah</label>
+                                class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Berat</label>
                         </div>
                         <div class="relative z-0 w-full mb-5 group">
                             <select id="satuan" name="satuan"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <option value="">Satuan</option>
-                                <option value="pcs"
-                                @if ($food->satuan=="pcs")
-                                    {{ "selected" }}
-                                @endif
-                                >pcs</option>
+                                
                                 <option value="gr"
                                 @if ($food->satuan=="gr")
                                     {{ "selected" }}
@@ -44,16 +47,7 @@
                                     {{ "selected" }}
                                 @endif
                                 >ltr</option>
-                                <option value="kg"
-                                @if ($food->satuan=="kg")
-                                    {{ "selected" }}
-                                @endif
-                                >kg</option>
-                                <option value="paket"
-                                @if ($food->satuan=="paket")
-                                    {{ "selected" }}
-                                @endif
-                                >paket</option>
+                                
                             </select>
                         </div>
                     </div>
@@ -112,6 +106,7 @@
                     
                 </td>
                 <td class="px-2 py-4 hidden sm:table-cell">
+                    {{ $item->berat }}
                     {{ $item->satuan }}
                     
                 </td>
