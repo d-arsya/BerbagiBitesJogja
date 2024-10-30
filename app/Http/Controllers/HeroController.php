@@ -46,7 +46,6 @@ class HeroController extends Controller
     }
     public function store(Request $request)
     {
-        dd($request);
         $donation = Donation::find($request["donation"]);
         if ($donation->sisa == 0) {
             return back();
@@ -54,10 +53,15 @@ class HeroController extends Controller
         $request->validate([
             "telepon" => 'regex:/^8/'
         ]);
+        $request["telepon"] = "62" . $request["telepon"];
         $kode = $this->generate();
+        $telepon = $donation->heroes()->pluck('telepon');
+        if($telepon->contains($request["telepon"])){
+            return back();
+        }
         Hero::create([
             "nama" => $request["nama"],
-            "telepon" => "62" . $request["telepon"],
+            "telepon" => $request["telepon"],
             "fakultas" => $request["fakultas"],
             "donation" => $request["donation"],
             "kode" => $kode,
