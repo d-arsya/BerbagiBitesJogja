@@ -110,24 +110,9 @@
                                         <select class="bg-tosca w-full text-slate-100 mt-6 focus:outline-none"
                                             placeholder="Nomor Whatsapp" name="fakultas" required>
                                             <option value="">Fakultas</option>
-                                            <option value="Biologi">Biologi</option>
-                                            <option value="Ekonomi Bisnis">Ekonomi Bisnis</option>
-                                            <option value="Filsafat">Filsafat</option>
-                                            <option value="Fisipol">Fisipol</option>
-                                            <option value="Geografi">Geografi</option>
-                                            <option value="Hukum">Hukum</option>
-                                            <option value="Ilmu Budaya">Ilmu Budaya</option>
-                                            <option value="Kedokteran">Kedokteran</option>
-                                            <option value="Kedokteran Gigi">Kedokteran Gigi</option>
-                                            <option value="Kedokteran Hewan">Kedokteran Hewan</option>
-                                            <option value="Kehutanan">Kehutanan</option>
-                                            <option value="MIPA">MIPA</option>
-                                            <option value="Pascasarjana">Pascasarjana</option>
-                                            <option value="Pertanian">Pertanian</option>
-                                            <option value="Peternakan">Peternakan</option>
-                                            <option value="Psikologi">Psikologi</option>
-                                            <option value="Teknologi Pertanian">Teknologi Pertanian</option>
-                                            <option value="Vokasi">Vokasi</option>
+                                            @foreach ($faculties as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>                                                
+                                            @endforeach
                                         </select>
                                         <div class="w-full h-px bg-navy mt-1"></div>
                                         <input type="submit" value="Submit"

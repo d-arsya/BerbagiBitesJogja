@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Backup;
 use App\Models\Donation;
+use App\Models\Faculty;
 use App\Models\Hero;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,8 @@ class HeroController extends Controller
     public function create()
     {
         $donations = Donation::where('status', 'aktif')->get();
-        return view('pages.form', ["donations" => $donations]);
+        $faculties = Faculty::whereNotIn('name',['Kontributor','Lainnya'])->get();
+        return view('pages.form', compact('donations','faculties'));
     }
     public function contributor(Request $request)
     {
@@ -50,6 +52,13 @@ class HeroController extends Controller
         if ($donation->sisa == 0) {
             return back();
         }
+        // dd(json_decode($donation->jatah));
+        $allJatah = json_decode($donation->jatah);
+        $jatah = $allJatah[$request["fakultas"]-1]->kuota;
+        if ($jatah == "0") {
+            return back();
+        }
+
         $request->validate([
             "telepon" => 'regex:/^8/'
         ]);
@@ -67,6 +76,8 @@ class HeroController extends Controller
             "kode" => $kode,
             "status" => "belum",
         ]);
+        $allJatah[$request["fakultas"]-1]->kuota = $allJatah[$request["fakultas"]-1]->kuota-1;
+        $donation->jatah = json_encode($allJatah);
         $donation->sisa = $donation->sisa - 1;
         $donation->save();
         session(['donation' => $donation->id]);
@@ -110,6 +121,9 @@ class HeroController extends Controller
     {
         $donation = $hero->donation();
         $donation->sisa = $donation->sisa + 1;
+        $allJatah = json_decode($donation->jatah);
+        $allJatah[$hero->fakultas-1]->kuota = $allJatah[$hero->fakultas-1]->kuota+1;
+        $donation->jatah = json_encode($allJatah);
         $donation->save();
         Backup::create([
             "nama" => $hero->nama,
@@ -143,6 +157,10 @@ class HeroController extends Controller
     {
         $hero = Hero::where('donation', session('donation'))->where('kode', session('kode'))->first();
         $donation = $hero->donation();
+        $allJatah = json_decode($donation->jatah);
+        $allJatah[$hero->fakultas-1]->kuota = $allJatah[$hero->fakultas-1]->kuota+1;
+        $donation->jatah = json_encode($allJatah);
+
         $donation->sisa = $donation->sisa + 1;
         $donation->save();
         $hero->delete();

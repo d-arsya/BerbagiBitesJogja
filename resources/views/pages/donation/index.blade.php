@@ -1,9 +1,11 @@
 @extends('layouts.main')
 @section('container')
-
+@if (auth()->user()->role=="core")
 <a href="{{ route('donation.create') }}" class="bg-lime-400 hover:bg-lime-600 p-2 text-white rounded-md shadow-md">
     + Tambah
 </a>
+    
+@endif
 <div class="mt-6">
     <div>
         {{ $donations->links() }}

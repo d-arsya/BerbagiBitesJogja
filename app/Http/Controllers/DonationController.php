@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donation;
+use App\Models\Faculty;
 use App\Models\Sponsor;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,18 @@ class DonationController extends Controller
     public function create()
     {
         $sponsors = Sponsor::all();
-        return view("pages.donation.create",["sponsors"=>$sponsors]);
+        $faculties = Faculty::all();
+        return view("pages.donation.create",compact('sponsors','faculties'));
     }
     public function store(Request $request)
     {
-        // dd(Sponsor::class);
+        $jatah = [];
+        for ($i=1; $i <= 20; $i++) { 
+            $jatah[]=["faculty_id"=>$i,"kuota"=>$request["kuota-fakultas-".$i]];
+            unset($request["kuota-fakultas-".$i]);
+        }
         $data = $request->all();
+        $data["jatah"] = json_encode($jatah);
         $data['sisa'] = $request->kuota;
         $data['status'] = "aktif";
         Donation::create($data);
@@ -31,12 +38,14 @@ class DonationController extends Controller
     }
     public function show(Donation $donation)
     {
-
+        
         return view("pages.donation.show",["donation"=>$donation,"heroes"=>$donation->heroes(),"foods"=>$donation->foods()]);
     }
     public function edit(Donation $donation)
     {
-        return view("pages.donation.edit",["donation"=>$donation]);
+
+        $faculties = Faculty::all();
+        return view("pages.donation.edit",compact('donation','faculties'));
     }
     public function update(Request $request, Donation $donation)
     {
@@ -48,7 +57,7 @@ class DonationController extends Controller
         $donation->pengambilan = $request->pengambilan;
         $donation->status = $request->status;
         $donation->jam = $request->jam;
-
+        
         if($request->tambah){
             $donation->sisa = $donation->sisa + $request->tambah;
             $donation->kuota = $donation->kuota + $request->tambah;
@@ -57,6 +66,12 @@ class DonationController extends Controller
             $donation->sisa = $donation->sisa - $request->kurang;
             $donation->kuota = $donation->kuota - $request->kurang;
         }
+        $jatah = [];
+        for ($i=1; $i <= 20; $i++) { 
+            $jatah[]=["faculty_id"=>$i,"kuota"=>$request["kuota-fakultas-".$i]];
+            unset($request["kuota-fakultas-".$i]);
+        }
+        $donation->jatah = json_encode($jatah);
         $donation->save();
 
         return redirect(route('donation.index'));
