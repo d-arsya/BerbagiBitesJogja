@@ -19,7 +19,7 @@ class DonationController extends Controller
     public function create()
     {
         $sponsors = Sponsor::all();
-        $faculties = Faculty::all();
+        $faculties = Faculty::whereNotIn('name',['Kontributor','Lainnya'])->get();
         return view("pages.donation.create",compact('sponsors','faculties'));
     }
     public function store(Request $request)
@@ -67,7 +67,7 @@ class DonationController extends Controller
             $donation->kuota = $donation->kuota - $request->kurang;
         }
         $jatah = [];
-        for ($i=1; $i <= 20; $i++) { 
+        for ($i=1; $i <= 21; $i++) { 
             $jatah[]=["faculty_id"=>$i,"kuota"=>$request["kuota-fakultas-".$i]];
             unset($request["kuota-fakultas-".$i]);
         }

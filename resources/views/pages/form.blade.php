@@ -74,8 +74,8 @@
                             class="link-tab {{ $id == 0 ? 'bg-white text-navy' : 'text-white' }} bg-tosca text-sm  p-2 rounded-md flex-grow text-center">
                             {{ $donation->sponsor()->name }}
                         </a>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
                 <div class="p-4">
                     @foreach ($donations as $id => $donation)
                         <div id="donatur{{ $id }}" class="tab-content {{ $id != 0 ? 'hidden' : '' }}">
@@ -83,7 +83,20 @@
                             </h1>
                             <h1 class="text-center text-white text-xs italic font-semibold rounded-md mt-2">
                                 {{ Carbon::parse($donation->pengambilan)->isoFormat('dddd, DD MMMM Y') }}</h1>
-                            @if ($donation->sisa > 0)
+                                @if ($donation->id==session('forbidden'))
+                                <div class="w-full rounded-lg bg-tosca mt-8 py-5 px-6">
+                                <h1 class="text-md text-white font-medium text-center italic">Mohon maaf kuota telah
+                                    terpenuhi, datang lagi lain waktu
+                                </h1>
+                                <h1 class="text-xs text-white font-medium text-center italic mt-3">ikuti instagram
+                                    kami</h1>
+                                    <a href="https://www.instagram.com/berbagibitesjogja/"
+                                    class="text-xs text-center block text-white font-medium text-center italic">@berbagibitesjogja</a>
+                                </div>
+                                <h1 class="text-pink-900 text-md font-semibold text-center mt-4">Heroes</h1>
+                                <h1 class="text-white text-2xl font-bold text-center mt-2">
+                                    {{ $donation->kuota }}/{{ $donation->kuota }}</h1>
+                            @elseif ($donation->sisa > 0)
                                 <div class="w-full rounded-lg bg-tosca mt-4 py-5 px-6">
                                     <h1 class="text-lg text-white font-semibold text-center">RSVP Now</h1>
                                     <form action="{{ route('hero.store') }}" method="POST">
@@ -119,6 +132,9 @@
                                             class="w-full bg-white rounded-md p-1 text-md font-bold mt-10 text-navy">
                                     </form>
                                 </div>
+                                <h1 class="text-pink-900 text-md font-semibold text-center mt-4">Heroes</h1>
+                                <h1 class="text-white text-2xl font-bold text-center mt-2">
+                                    {{ $donation->kuota - $donation->sisa }}/{{ $donation->kuota }}</h1>
                             @else
                                 <div class="w-full rounded-lg bg-tosca mt-8 py-5 px-6">
                                     <h1 class="text-md text-white font-medium text-center italic">Mohon maaf kuota telah
@@ -129,10 +145,10 @@
                                     <a href="https://www.instagram.com/berbagibitesjogja/"
                                         class="text-xs text-center block text-white font-medium text-center italic">@berbagibitesjogja</a>
                                 </div>
+                                <h1 class="text-pink-900 text-md font-semibold text-center mt-4">Heroes</h1>
+                                <h1 class="text-white text-2xl font-bold text-center mt-2">
+                                    {{ $donation->kuota }}/{{ $donation->kuota }}</h1>
                             @endif
-                            <h1 class="text-pink-900 text-md font-semibold text-center mt-4">Heroes</h1>
-                            <h1 class="text-white text-2xl font-bold text-center mt-2">
-                                {{ $donation->kuota - $donation->sisa }}/{{ $donation->kuota }}</h1>
                         </div>
                     @endforeach
                 </div>

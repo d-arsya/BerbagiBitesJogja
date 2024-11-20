@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         "Hukum", "Ilmu Budaya", "Kedokteran", "Kedokteran Gigi", 
         "Kedokteran Hewan", "Kehutanan", "MIPA", "Pascasarjana", 
         "Pertanian", "Peternakan", "Psikologi", "Teknologi Pertanian", 
-        "Vokasi","Lainnya","Kontributor"
+        "Vokasi","Teknik","Lainnya","Kontributor"
     ];
     public function run(): void
     {

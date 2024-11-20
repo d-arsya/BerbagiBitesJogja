@@ -56,7 +56,7 @@ class HeroController extends Controller
         $allJatah = json_decode($donation->jatah);
         $jatah = $allJatah[$request["fakultas"]-1]->kuota;
         if ($jatah == "0") {
-            return back();
+            return back()->with('forbidden',$donation->id);
         }
 
         $request->validate([
