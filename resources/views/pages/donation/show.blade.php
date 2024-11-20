@@ -55,14 +55,14 @@
                     {{ $item->nama }}
 
                     <span class="md:hidden italic font-normal text-gray-500 block">
-                        {{ $item->fakultas }}
+                        {{ $item->faculty()->name }}
                     </span>
                     <span class="md:hidden italic font-normal text-gray-500 block">
                         {{ $item->kode }}
                     </span>
                 </th>
                 <td class="px-6 py-4 hidden sm:table-cell">
-                    {{ $item->fakultas }}
+                    {{ $item->faculty()->name }}
                     
                 </td>
                 <td class="px-6 py-4 hidden sm:table-cell">

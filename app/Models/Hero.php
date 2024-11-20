@@ -13,6 +13,6 @@ class Hero extends Model
         return $this->belongsTo(Donation::class,'donation','id')->first();
     }
     public function faculty(){
-        return $this->belongsTo(Donation::class,'fakultas','id')->first();
+        return $this->belongsTo(Faculty::class,'fakultas','id')->first();
     }
 }

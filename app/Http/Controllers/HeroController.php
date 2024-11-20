@@ -56,7 +56,8 @@ class HeroController extends Controller
         $allJatah = json_decode($donation->jatah);
         $jatah = $allJatah[$request["fakultas"]-1]->kuota;
         if ($jatah == "0") {
-            return back()->with('forbidden',$donation->id);
+            session(['forbidden' => $donation->id]);
+            return back();
         }
 
         $request->validate([
@@ -148,9 +149,9 @@ class HeroController extends Controller
 
         return $uniqueString;
     }
-    public function faculty($faculty)
+    public function faculty(Faculty $faculty)
     {
-        $heroes = Hero::where('fakultas', $faculty)->get();
+        $heroes = Hero::where('fakultas', $faculty->id)->get();
         return view('pages.hero.faculty', ["heroes" => $heroes]);
     }
     public function cancel(Request $request)

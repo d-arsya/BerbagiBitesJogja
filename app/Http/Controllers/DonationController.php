@@ -25,7 +25,7 @@ class DonationController extends Controller
     public function store(Request $request)
     {
         $jatah = [];
-        for ($i=1; $i <= 20; $i++) { 
+        for ($i=1; $i <= 19; $i++) { 
             $jatah[]=["faculty_id"=>$i,"kuota"=>$request["kuota-fakultas-".$i]];
             unset($request["kuota-fakultas-".$i]);
         }
@@ -43,8 +43,7 @@ class DonationController extends Controller
     }
     public function edit(Donation $donation)
     {
-
-        $faculties = Faculty::all();
+        $faculties = Faculty::whereNotIn('name',['Kontributor','Lainnya'])->get();
         return view("pages.donation.edit",compact('donation','faculties'));
     }
     public function update(Request $request, Donation $donation)
@@ -67,7 +66,7 @@ class DonationController extends Controller
             $donation->kuota = $donation->kuota - $request->kurang;
         }
         $jatah = [];
-        for ($i=1; $i <= 21; $i++) { 
+        for ($i=1; $i <= 19; $i++) { 
             $jatah[]=["faculty_id"=>$i,"kuota"=>$request["kuota-fakultas-".$i]];
             unset($request["kuota-fakultas-".$i]);
         }

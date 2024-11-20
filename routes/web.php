@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function(){
     Route::resource('sponsor', SponsorController::class);
     Route::resource('food', FoodController::class)->except(['show','create']);
     Route::resource('hero', HeroController::class)->except(['show','edit','create','store']);
-    Route::get('/hero/faculty/{faculty}',[HeroController::class,'faculty'])->name('hero.faculty');
+    Route::get('/hero/faculty/{faculty:name}',[HeroController::class,'faculty'])->name('hero.faculty');
     Route::get('/hero/backups',[HeroController::class,'backups'])->name('hero.backups');
     Route::get('/hero/restore/{backup}',[HeroController::class,'restore'])->name('hero.restore');
     Route::delete('/hero/trash/{backup}',[HeroController::class,'trash'])->name('hero.trash');

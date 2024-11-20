@@ -34,14 +34,14 @@
                         <th scope="row" class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap">
                             {{ $item->nama }}
                             <span class="md:hidden italic font-normal text-gray-500 block">
-                                <a href="{{ route('hero.faculty', $item->fakultas) }}">
-                                    {{ $item->fakultas }}
+                                <a href="{{ route('hero.faculty', $item->faculty()->name) }}">
+                                    {{ $item->faculty()->name }}
                                 </a>
                             </span>
                         </th>
                         <td class="px-2 py-4 hidden sm:table-cell">
-                            <a href="{{ route('hero.faculty', $item->fakultas) }}">
-                                {{ $item->fakultas }}
+                            <a href="{{ route('hero.faculty', $item->faculty()->name) }}">
+                                {{ $item->faculty()->name }}
                             </a>
 
                         </td>
